@@ -1,5 +1,6 @@
 package edu.uncc.midtermapp.models;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -15,7 +16,14 @@ public class Answer implements Serializable {
     public Answer() {
     }
 
-    public Answer(JSONObject json) {
+    public Answer(JSONObject json) throws JSONException {
+
+        /*
+               "answer_id": "50",
+                 jj"answer_text": "Olympic Swimmer"
+         */
+        this.answer_id = json.getString("answer_id");
+        this.answer_text = json.getString("answer_text");
 
     }
 
@@ -37,9 +45,6 @@ public class Answer implements Serializable {
 
     @Override
     public String toString() {
-        return "Answer{" +
-                "answer_id='" + answer_id + '\'' +
-                ", answer_text='" + answer_text + '\'' +
-                '}';
+        return answer_text;
     }
 }
